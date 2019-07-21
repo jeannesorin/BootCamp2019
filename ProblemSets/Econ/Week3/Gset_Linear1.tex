@@ -1,4 +1,4 @@
- \documentclass[11pt]{article}
+\documentclass[11pt]{article}
 
 % Extract
 % \usepackage[active,
@@ -347,7 +347,7 @@
 % \end{extract*}
 
 \title{Problem Set Econ - Week 3 - DSGE models}
-\author{Jeanne Sorin}
+\author{Jeanne Sorin\footnote{In collaboration with Thomas Pellet.}}
 \begin{document}
 \maketitle
 
@@ -359,125 +359,146 @@ In the Brock-Mirman model, there is only one equation, as there is no labor-leis
 \frac{1}{e^{z_{t}} K_{t}^{\alpha}-K_{t+1}}=\beta E_{t}\left\{\frac{\alpha e^{z_{t+1}} K_{t+1}^{\alpha-1}}{e^{z_{t+1}} K_{t+1}^{\alpha}-K_{t+2}}\right\}
 \end{equation}
 
-\noindent The strategy is to guess the policy function to be $ K_{t+1}=A e^{z_{t}} K_{t}^{\alpha} $ and replace both $K_{t+2}$ and $K_{t}$ in the Euler equation to only keet $K_{t+1}$:
+This time we want to rewrite the equation as the $\Gamma$ function (using Uhlig's notation) to analytically find the values of the matrices F, G, H, L, M, N and consequently P and Q.
+\\
+\\
+To do so we rewrite the above equation:
 
+\begin{equation}
+	E_t \left\{\b \frac{ \a e^{z_{t+1}} K_{t+1}^{\a - 1} (e^{z_t} K_t ^\a -K_{t+1})}{e^{z_{t+1}}K_{t+1}^{\a} - K_{t+2}} -1 \right\}= 0
+\end{equation}
+
+This is equivalent to :
+\begin{equation}
+	E_t \left\{\Gamma (X_{t+1}, X_t, X_{t-1}, Z_{t+1}, Z_t) \right\} = 0
+\end{equation}
+With $X_{t+1} = K_{t+1}$, $X_{t} = K_{t}$, $X_{t-1} = K_{t-1}$, $Z_{t+1} = Z_{t+1}$, $Z_{t} = Z_{t}$ and our $\Gamma$ function having only 1 dimension.
+\\
+\\
+We differentiate $\Gamma$ wrt all parameters, then evaluate them at the steady state for z == 0. \\
+For F:
 \begin{align}
-\frac{1}{\frac{1}{A}K_{t+1}-K_{t+1}}&=\beta E_{t}\left\{\frac{\alpha e^{z_{t+1}} K_{t+1}^{\alpha-1}}{e^{z_{t+1}} K_{t+1}^{\alpha}-A e^{z_{t+1}} K_{t+1}^{\alpha}}\right\} \\
-\bic A^2 - (\b \a + 1) A - \b \a &= 0
+	\frac{d\Gamma}{d X_{t+1}} &= \frac{d\Gamma}{d K_{t+2}} = E \left\{\b \frac{\a e^{z_{t+1}} K_{t+1}^{\a - 1} (e^{z_t} K_t ^\a -K_{t+1})}{(e^{z_{t+1}}K_{t+1}^{\a} - K_{t+2})^2}
+	\right\} \\
+	\frac{d\Gamma}{d X} &= \left\{\b \frac{\a K^{\a - 1} (K ^\a -K)}{(K^{\a} - K)^2}
+	\right\} \\
+	F &=  \left\{\b \frac{\a K^{\a - 1}}{K_\a. K} \right\}
 \end{align}
 
-${\a \b, 1}$ are solutions to this equation.
+For G (evaluated at the steady state):
+\begin{align}
+	\frac{d\Gamma}{d X_{t}} &= \frac{\b (\a K^{\a-1})((\a -1)K^{\a - 1}-\a)(K^\a - K) - \a K^{\a -1} (K^\a - 1)}{(K^\a-K)^2} \\
+	\frac{d\Gamma}{d X_{t}} &= \frac{\b (\a K^{\a-1})(K^\a - K)(-K^{\a-1} - \a)}{K^\a - 1)}{(K^\a-K)^2}\\
+	\frac{ d\Gamma}{d X_{t}} &= \frac{\b (\a K^{\a-1})(-K^{\a-1} - \a)}{K^\a - 1)}{(K^\a-K)}\\
+	G &= -\frac{\b (\a K_{\a-1})(K^{\a-1} + \a)}{K^\a - 1)}{(K^\a-K)}
+\end{align}
 
+For H (evaluated at the steady state):
+\begin{align}
+	\frac{d\Gamma}{d X_{t-1}} &= \frac{\b \a K^{\a-1}\a K^{\a-1}}{K^\a - K}\\
+	\frac{d\Gamma}{d X_{t-1}} &= \frac{\b \a^2 K^{2(\a-1)}}{K^\a - K}\\
+	H &= \frac{\b \a^2 K^{2(\a-1)}}{K^\a - K}\\
+\end{align}
 
+For L (evaluated at the steady state):
+\begin{align}
+	\frac{d\Gamma}{d Z_{t+1}} &= L = - \frac{\b \a K^{2(\a-1)}}{K^\a - K}\\
+\end{align}
+
+For M (evaluated at the steady state):
+\begin{align}
+	\frac{d\Gamma}{d Z_{t}} &= M = - \frac{\b \a^2 K{2(\a-1)}}{K^\a - K}\\
+\end{align}
+
+Moreover, we have
+\begin{align}
+GP^2 + GP + H = 0 \\
+FQN + (FP + G) Q + (LN + M) = 0
+\end{align}
+Rearranging (see exercise 3 for details)
+\begin{align}
+H &= \frac{\a^2 K^{2(\a-1)}}{K^\a - K}\\
+P &= \frac{-G +/- (G^2 - 4FH)^{0.5}}{2F}\\
+Q &= - \frac{LN + M}{FN + FP + G}
+\end{align}
+
+\noindent Fitting in our calibrated parameter values from the DSGE lecture: $\b=.98$, $\a=.40$, $z=0$, and having :
+\begin{align}
+F &=  \left\{- \frac{\a K^{\a - 1}}{K_\a. K} \right\}\\
+G &= -\frac{(\a K_{\a-1})(K^{\a-1} + \a)}{K^\a - 1)}{(K^\a-K)}\\
+H &= \frac{\a^2 K^{2(\a-1)}}{K^\a - K}\\
+L &= - \frac{\a K_{2(\a-1)}}{K^\a - K}\\
+M &= - \frac{\a^2 K_{2(\a-1)}}{K^\a - K}\\
+P &= \frac{-G \pm (G^2 - 4FH)^{0.5}}{2F}\\
+Q &= - \frac{LN + M}{FN + FP + G}
+\end{align}
+becomes
+\begin{align}
+F &=  \left\{-\frac{.40 K^{-0.60}}{K_{.40}. K} \right\}\\
+G &= -\frac{(\a K_{-0.60})(K^{-0.60} + 0.40)}{K^{.40} - 1)}{(K^{.40}-K)}\\
+H &= \frac{0.40^2 K^{-1.2}}{K^({0.40}) - K}\\
+L &= - \frac{\a K_{-1.2}}{K^{.40} - K}\\
+M &= - \frac{\a^2 K_{-1.2}}{K^{.40} - K}\\
+Solve P Q
+\end{align}
+
+See Notebook for more the values of P \& Q
 
 \section*{Exercise 2}
 
-The given functional forms are:
+Now we redo the exercise with $k = \ln(K)$. Using the previous equations, we can replace $K$ by $e^k$ and take the logarithm of the gamma equation to get:
 
-\begin{align} 
-u\left(c_{t}, \ell_{t}\right) &=\ln c_{t}+a \ln \left(1-\ell_{t}\right) \\ 
-F\left(K_{t}, L_{t}, z_{t}\right) &=e^{z_{t}} K_{t}^{\alpha} L_{t}^{1-\alpha} 
-\end{align}
+\begin{equation}
+	\ln \parens{E_t \left\{\b \frac{ \a e^{z_{t+1} + (\a - 1)k_{t+1}} ( e^{z_t + \a k_t} - e^{ k_{t+1}})}{e^{z_{t+1} + \a k_{t+1}} - e^{k_{t+2}}} \right\}} = 0 
+\end{equation}
 
-We compute the FOC of these 2 equations and plug them in the baseline model. We get:
+\begin{equation}
+\ln \b +  \ln \parens{\a e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t} - \a e^{z_{t+1} + \a k_{t+1}}} - \ln \parens{e^{z_{t+1} + \a k_{t+1}} - e^{k_{t+2}}} = 0
+\end{equation}
 
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-\frac{1}{c_t}&=\beta E_{t}\left\{\frac{1}{c_{t+1}}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
--\frac{a}{1-l_t}&=\frac{1}{c_t} w_{t}(1-\tau) \\
-r_{t}&=\a e^{z_{t}} K_{t}^{\alpha-1} L_{t}^{1-\alpha} \\
-w_{t}&=(1 - \a) e^{z_{t}} K_{t}^{\alpha} L_{t}^{-\alpha} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_{t}\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}
-\end{align}
 
-We cannot use the same technic as in the first exercise because we know have consumption and leisure. The random term does not cancel out if we guess a functional form, making the integral impossible to solve analytically. This is because the optimal amount of saving also depends on how much does the agent work: $l_t$ has an impact on the rate of return of the capita $k_t$ and the household's income.
+We then have the following equations:
 
+\begin{align*}
+F &=  \frac{e^{z_{t+1}}}{e^{z_{t+1} + \a k_{t+1}} - e^{k_{t+2}}} \\
+G &= \frac{(\a -1)  e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t} - \a e^{z_{t+1} + \a k_{t+1}}}{ e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t} - e^{z_{t+1} + \a k_{t+1}}} - \frac{\a e^{z_{t+1} + \a k_{t+1}}}{e^{z_{t+1} + \a k_{t+1}} - e^{k_{t+2}}} \\
+H &= \frac{\a  e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t}}{ e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t} - e^{z_{t+1} + \a k_{t+1}}} \\
+L &= 1 -  \frac{e^{z_{t+1} + \a k_{t+1}}}{e^{z_{t+1} + \a k_{t+1}} - e^{k_{t+2}}} \\
+M &=  \frac{ e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t}}{ e^{z_{t+1} + (\a - 1)k_{t+1} + z_t + \a k_t} -  e^{z_{t+1} + \a k_{t+1}}} \\
+P &= \frac{-G \pm (G^2 - 4FH)^{\frac{1}{2}}}{2F} \\
+Q &= - \frac{LN + M}{FN + FP + G}
+\end{align*}
+
+
+
+% \listoftodos
 
 \section*{Exercise 3}
-The new functional forms are:
 
-\begin{align} 
-u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma}+a \ln \left(1-\ell_{t}\right) \\ 
-F\left(K_{t}, L_{t}, z_{t}\right) &=e^{z_{t}} K_{t}^{\alpha} L_{t}^{1-\alpha} \end{align}
-
-The 7 characterizing equations are:
 \begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
--\frac{a}{1-l_t}&=c_t^{-\g} w_{t}(1-\tau) \\
-r_{t}&=\a e^{z_{t}} K_{t}^{\alpha-1} L_{t}^{1-\alpha} \\
-w_{t}&=(1 - \a) e^{z_{t}} K_{t}^{\alpha} L_{t}^{-\alpha} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_{t}\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}\\
+E_{t}\left\{F \tilde{X}_{t+1}+G \tilde{X}_{t}+H \tilde{X}_{t-1}+L \tilde{Z}_{t+1}+M \tilde{Z}_{t}\right\} &= 0\\
+E_{t}\left\{F \parens{P \tilde{X}_t + Q \tilde{Z}_{t+1}} +G \parens{P \tilde{X}_{t-1} + Q \tilde{Z}_t}+H \tilde{X}_{t-1}+L \tilde{Z}_{t+1}+M \tilde{Z}_{t}\right\} &= 0 \\
+F \squares{P \parens{P \tilde{X}_{t-1} + Q \tilde{Z}_t} + Q N \tilde{Z}_{t}} +G \parens{P \tilde{X}_{t-1} + Q \tilde{Z}_t}+H \tilde{X}_{t-1}+L \tilde{Z}_{t+1}+M \tilde{Z}_{t} &= 0 \\
+[(F P+G) P+H] \tilde{X}_{t-1}+[(F Q+L) N+(F P+G) Q+M] \tilde{Z}_{t}&=0
 \end{align}
+
+
+%\listoftodos 
+%\begin{align}
+%E_{t}\left\{F \tilde{X}_{t+1}} &= F(P \tilde{X}_{t} + Q \tilde{Z}_{t+1}) \right\}\\
+%E_{t}\left\{F \tilde{X}_{t+1}} &= F P^2 \tilde{X}_{t-1} + FPQ\tilde{Z}_{t} + FQN \tilde{Z}_{t} \right\}\\
+%\end{align}
+
+
+
 
 \section*{Exercise 4}
-The new functional forms are:
 
-\begin{align} 
- u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma}+a \frac{\left(1-\ell_{t}\right)^{1-\xi}-1}{1-\xi} \\ F\left(K_{t}, L_{t}, z_{t}\right) &=e^{z_{t}}\left[\alpha K_{t}^{\eta}+(1-\alpha) L_{t}^{\eta}\right]^{\frac{1}{\eta}} 
- \end{align}
-
-and the characterizing equations are now:
-
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
-\frac{a}{(1-\ell_t)^{\xi}}&=c_t^{-\g} w_{t}(1-\tau) \\
-r_{t}&=\a K_{t}^{\eta - 1} e^{z_{t}} \left[\alpha K_{t}^{\eta}+(1-\alpha) L_{t}^{\eta}\right]^{\frac{1}{\eta} - 1} \\
-w_{t}&=(1-\a) L_{t}^{\eta - 1} e^{z_{t}} \left[\alpha K_{t}^{\eta}+(1-\alpha) L_{t}^{\eta}\right]^{\frac{1}{\eta} - 1} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_{t}\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}\\
-\end{align}
-
+See Jupyter Notebook.
 
 \section*{Exercise 5}
-The functional forms are now 
 
-\begin{align} 
- u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma} \\ 
- F\left(K_{t}, L_{t}, z_{t}\right) &= K_{t}^{\alpha} \parens{e^{z_{t}} L_{t}}^{1-\alpha} 
- \end{align}
-
-and the characterizing equations are now:
-
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
-r_{t}&=\a K_{t}^{\alpha - 1} \parens{e^{z_{t}}}^{1-\alpha} \\
-w_{t}&=(1-\a)K_{t}^{\alpha} e^{(1- \alpha) z_{t}} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_t \\
-z_{t}&=\left(1-\rho_{z}\right) \overline{z}+\rho_{z} z_{t-1}+
-\epsilon_{t}^{z}\\
-\end{align}
-
-
-Solving the model at the steady state, we have:
-
-\begin{align}
-c&=(1-\tau)\left[w+\left(r-\delta\right) k\right]+T \\
-1&=\beta \left\{\left[\left(r-\delta\right)(1-\tau)+1\right]\right\} \\
-%1&=c^{-\g} w(1-\tau) \\
-r&=\a K^{\alpha - 1} \parens{e^{z}}^{1-\alpha} \\
-w&=(1-\a)K^{\alpha} e^{(1- \alpha)} z \\
-\tau\left[w+\left(r-\delta\right) k\right]&=T \\
-z^{*}&=\overline{z}
-\end{align}
-
-
-Simplyfying, we get:
-
-
-\begin{align}
-c&= \parens{(1 - \t)(1-\a) \parens{\frac{1-\b}{\b (1 - \t) \a} + \d}^{\frac{1}{\a - 1}}}^{\frac{1}{\g}} \\
-r&= \frac{1-\b}{\b (1 - \t)} + \d \\
-w&=(1-\a)\parens{\frac{1-\b}{\b (1 - \t) \a} + \d}^{\frac{1}{\a - 1}} \\
-k&=\parens{\frac{1-\b}{\b (1 - \t) \a} + \d}^{\frac{1}{\a - 1}} \\
-T &=\tau\left[w+\left(r-\delta\right) k\right]\\
-z&=\overline{z}
-\end{align}
-
+See Jupyter Notebook.
 
 \section*{Exercise 6}
 
@@ -499,46 +520,26 @@ w_{t}&=(1-\a)K_{t}^{\alpha} e^{(1- \alpha) z_{t}}L_t^{1-\a} \\
 z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}
 \end{align}
 
-Solving for the steady state, we get the following equations:
-
+Dropping the definition equations (0.45, 0.48, 0.49, 0.50, 0.51), we are left with the following system:
 \begin{align}
-c&=(1-\tau)\left[w \ell+\left(r-\delta\right) k\right]+T \\
-1&=\beta E\left\{\left[\left(r-\delta\right)(1-\tau)+1\right]\right\} \\
-\frac{a}{(1-\ell)^{\xi}}&=c^{-\g} w(1-\tau) \\
-r&=\a K^{\alpha - 1} e^{(1-\alpha)z}L^{1-\a}\\
-w&=(1-\a)K^{\alpha} e^{(1- \alpha) z}L^{1-\a} \\
-\tau\left[w \ell+\left(r-\delta\right) k\right]&=T\\
-z&=\overline{z}
+\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right] - c_t^{-\g}\right\} &= 0 \\
+\frac{a}{(1-\ell_t)^{\xi}}&=c_t^{-\g} w_{t}(1-\tau) \\
 \end{align}
 
-
-and therefore:
-
+\noindent With $X_t = (K_{t+1}, L_t)$ and $Z_t = \braces{Z_t}$, this is equivalent to 
+$\Gamma(X_{t+1}, X_t, X_{t-1}, Z_{t+1}, Z_{t}) = 0$. 
+\\
+\\
+Note: The gamma function should be set to 0 if one wants to do the simple linearization, and equal to 1 if one chooses the log-linearization of the model. 
+\\
+Here we have a system of equations equal to 0.
 \begin{align}
-c&=w \ell+ (r-\delta) k \\
-r&= \frac{1-\b}{\b (1 - \t)} + \d \\
-r&=\a K^{\alpha - 1} e^{(1-\alpha)z}L^{1-\a}\\
-K &= \frac{\a w}{(1-\a)r}\\
-c &= \parens{-\frac{w}{a}(1-\ell)^{-\xi}(1-\tau)}^{\frac{1}{\g}}\\
-z &=\overline{z}
+E_{t} \braces{\begin{array}{ll}
+              \beta c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right] - c_t^{-\g}  \\
+              \frac{a}{(1-\ell_t)^{\xi}} - c_t^{-\g} w_{t}(1-\tau)      \end{array}} &= 0
 \end{align}
 
 
 
-\section*{Exercise 7}
-The model is now defined by:
-\begin{align*}
-\overline{c}&=(1-\tau)[\overline{w} \overline{\ell}+(\overline{r}-\delta) \overline{k}]+\overline{T} \\ 
-u_{c}(\overline{c}, \overline{\ell})&=\beta E_{t}\left\{u_{c}(\overline{c}, \overline{\ell})[(\overline{r}-\delta)(1-\tau)+1]\right\} \\ 
--u_{\ell}(\overline{c}, \overline{\ell})&=u_{c}(\overline{c}, \overline{\ell}) \overline{w}(1-\tau) \\ 
-\overline{r}&=f_{K}(\overline{k}, \overline{\ell}, \overline{z}) \\ 
-\overline{w}&=f_{L}(\overline{k}, \overline{\ell}, \overline{z}) \\ 
-\tau[\overline{w} \overline{\ell}+(\overline{r}-\delta) \overline{k}]&=\overline{T}
-\end{align*}
-
-
-
-
-% \listoftodos
 
 \end{document}

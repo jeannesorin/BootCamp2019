@@ -344,201 +344,185 @@
 % \end{extract*}
 
 
-% \end{extract*}
-
-\title{Problem Set Econ - Week 3 - DSGE models}
+\title{Math - Problem Set 1 : Measure Theory}
 \author{Jeanne Sorin}
+
+
 \begin{document}
 \maketitle
 
+\section*{Section 1} % (fold)
+\label{sec:section_1}
 
+\subsection*{Exercise 1.3} % (fold)
 
-\section*{Exercise 1}
-In the Brock-Mirman model, there is only one equation, as there is no labor-leisure choice. The one Euler Equation (EE) is:
-\begin{equation}
-\frac{1}{e^{z_{t}} K_{t}^{\alpha}-K_{t+1}}=\beta E_{t}\left\{\frac{\alpha e^{z_{t+1}} K_{t+1}^{\alpha-1}}{e^{z_{t+1}} K_{t+1}^{\alpha}-K_{t+2}}\right\}
-\end{equation}
-
-\noindent The strategy is to guess the policy function to be $ K_{t+1}=A e^{z_{t}} K_{t}^{\alpha} $ and replace both $K_{t+2}$ and $K_{t}$ in the Euler equation to only keet $K_{t+1}$:
-
-\begin{align}
-\frac{1}{\frac{1}{A}K_{t+1}-K_{t+1}}&=\beta E_{t}\left\{\frac{\alpha e^{z_{t+1}} K_{t+1}^{\alpha-1}}{e^{z_{t+1}} K_{t+1}^{\alpha}-A e^{z_{t+1}} K_{t+1}^{\alpha}}\right\} \\
-\bic A^2 - (\b \a + 1) A - \b \a &= 0
-\end{align}
-
-${\a \b, 1}$ are solutions to this equation.
+\noindent $\mathcal{G}_{1}=\{A : A \subset \mathbb{R}, A \text { open }\}$: G1 is the set of open sets in R and is a $\s$ algebra because:
+\begin{itemize}
+	\item G1 is a non-empty set.
+	\item G1 includes the empty set because it is an open set.
+	\item G1 includes the complement of the empty set, R, because it is an open set in R : G1 is therefore closed under complements.
+	\item The union of open sets is also open, so G1 is closed under finite unions.
+	\item G1 is closed under countable unions: when n goes to infinity, the union of $A_n$ is also in A because countable unions of open sets are also open.
+\end{itemize}
 
 
 
-\section*{Exercise 2}
-
-The given functional forms are:
-
-\begin{align} 
-u\left(c_{t}, \ell_{t}\right) &=\ln c_{t}+a \ln \left(1-\ell_{t}\right) \\ 
-F\left(K_{t}, L_{t}, z_{t}\right) &=e^{z_{t}} K_{t}^{\alpha} L_{t}^{1-\alpha} 
-\end{align}
-
-We compute the FOC of these 2 equations and plug them in the baseline model. We get:
-
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-\frac{1}{c_t}&=\beta E_{t}\left\{\frac{1}{c_{t+1}}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
--\frac{a}{1-l_t}&=\frac{1}{c_t} w_{t}(1-\tau) \\
-r_{t}&=\a e^{z_{t}} K_{t}^{\alpha-1} L_{t}^{1-\alpha} \\
-w_{t}&=(1 - \a) e^{z_{t}} K_{t}^{\alpha} L_{t}^{-\alpha} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_{t}\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}
-\end{align}
-
-We cannot use the same technic as in the first exercise because we know have consumption and leisure. The random term does not cancel out if we guess a functional form, making the integral impossible to solve analytically. This is because the optimal amount of saving also depends on how much does the agent work: $l_t$ has an impact on the rate of return of the capita $k_t$ and the household's income.
-
-
-\section*{Exercise 3}
-The new functional forms are:
-
-\begin{align} 
-u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma}+a \ln \left(1-\ell_{t}\right) \\ 
-F\left(K_{t}, L_{t}, z_{t}\right) &=e^{z_{t}} K_{t}^{\alpha} L_{t}^{1-\alpha} \end{align}
-
-The 7 characterizing equations are:
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
--\frac{a}{1-l_t}&=c_t^{-\g} w_{t}(1-\tau) \\
-r_{t}&=\a e^{z_{t}} K_{t}^{\alpha-1} L_{t}^{1-\alpha} \\
-w_{t}&=(1 - \a) e^{z_{t}} K_{t}^{\alpha} L_{t}^{-\alpha} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_{t}\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}\\
-\end{align}
-
-\section*{Exercise 4}
-The new functional forms are:
-
-\begin{align} 
- u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma}+a \frac{\left(1-\ell_{t}\right)^{1-\xi}-1}{1-\xi} \\ F\left(K_{t}, L_{t}, z_{t}\right) &=e^{z_{t}}\left[\alpha K_{t}^{\eta}+(1-\alpha) L_{t}^{\eta}\right]^{\frac{1}{\eta}} 
- \end{align}
-
-and the characterizing equations are now:
-
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
-\frac{a}{(1-\ell_t)^{\xi}}&=c_t^{-\g} w_{t}(1-\tau) \\
-r_{t}&=\a K_{t}^{\eta - 1} e^{z_{t}} \left[\alpha K_{t}^{\eta}+(1-\alpha) L_{t}^{\eta}\right]^{\frac{1}{\eta} - 1} \\
-w_{t}&=(1-\a) L_{t}^{\eta - 1} e^{z_{t}} \left[\alpha K_{t}^{\eta}+(1-\alpha) L_{t}^{\eta}\right]^{\frac{1}{\eta} - 1} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_{t}\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}\\
-\end{align}
-
-
-\section*{Exercise 5}
-The functional forms are now 
-
-\begin{align} 
- u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma} \\ 
- F\left(K_{t}, L_{t}, z_{t}\right) &= K_{t}^{\alpha} \parens{e^{z_{t}} L_{t}}^{1-\alpha} 
- \end{align}
-
-and the characterizing equations are now:
-
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
-r_{t}&=\a K_{t}^{\alpha - 1} \parens{e^{z_{t}}}^{1-\alpha} \\
-w_{t}&=(1-\a)K_{t}^{\alpha} e^{(1- \alpha) z_{t}} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_t \\
-z_{t}&=\left(1-\rho_{z}\right) \overline{z}+\rho_{z} z_{t-1}+
-\epsilon_{t}^{z}\\
-\end{align}
-
-
-Solving the model at the steady state, we have:
-
-\begin{align}
-c&=(1-\tau)\left[w+\left(r-\delta\right) k\right]+T \\
-1&=\beta \left\{\left[\left(r-\delta\right)(1-\tau)+1\right]\right\} \\
-%1&=c^{-\g} w(1-\tau) \\
-r&=\a K^{\alpha - 1} \parens{e^{z}}^{1-\alpha} \\
-w&=(1-\a)K^{\alpha} e^{(1- \alpha)} z \\
-\tau\left[w+\left(r-\delta\right) k\right]&=T \\
-z^{*}&=\overline{z}
-\end{align}
-
-
-Simplyfying, we get:
-
-
-\begin{align}
-c&= \parens{(1 - \t)(1-\a) \parens{\frac{1-\b}{\b (1 - \t) \a} + \d}^{\frac{1}{\a - 1}}}^{\frac{1}{\g}} \\
-r&= \frac{1-\b}{\b (1 - \t)} + \d \\
-w&=(1-\a)\parens{\frac{1-\b}{\b (1 - \t) \a} + \d}^{\frac{1}{\a - 1}} \\
-k&=\parens{\frac{1-\b}{\b (1 - \t) \a} + \d}^{\frac{1}{\a - 1}} \\
-T &=\tau\left[w+\left(r-\delta\right) k\right]\\
-z&=\overline{z}
-\end{align}
-
-
-\section*{Exercise 6}
-
-The functional forms are now 
-
-\begin{align} 
- u\left(c_{t}, \ell_{t}\right) &=\frac{c_{t}^{1-\gamma}-1}{1-\gamma}+a \frac{\left(1-\ell_{t}\right)^{1-\xi}-1}{1-\xi} \\ 
-  F\left(K_{t}, L_{t}, z_{t}\right) &= K_{t}^{\alpha} \parens{e^{z_{t}} L_{t}}^{1-\alpha} 
- \end{align}
-and the characterizing equations are now:
-
-\begin{align}
-c_{t}&=(1-\tau)\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]+k_{t}+T_{t}-k_{t+1} \\
-c_t^{-\g}&=\beta E_{t}\left\{c_{t+1}^{-\g}\left[\left(r_{t+1}-\delta\right)(1-\tau)+1\right]\right\} \\
-\frac{a}{(1-\ell_t)^{\xi}}&=c_t^{-\g} w_{t}(1-\tau) \\
-r_{t}&=\a K_{t}^{\alpha - 1} e^{(1-\alpha)z_{t}}L_t^{1-\a}\\
-w_{t}&=(1-\a)K_{t}^{\alpha} e^{(1- \alpha) z_{t}}L_t^{1-\a} \\
-\tau\left[w_{t} \ell_{t}+\left(r_{t}-\delta\right) k_{t}\right]&=T_t\\
-z_t&= (1 - \rho_z) \overline{z} + \rho_z z_{t-1} + \e_t^{z}
-\end{align}
-
-Solving for the steady state, we get the following equations:
-
-\begin{align}
-c&=(1-\tau)\left[w \ell+\left(r-\delta\right) k\right]+T \\
-1&=\beta E\left\{\left[\left(r-\delta\right)(1-\tau)+1\right]\right\} \\
-\frac{a}{(1-\ell)^{\xi}}&=c^{-\g} w(1-\tau) \\
-r&=\a K^{\alpha - 1} e^{(1-\alpha)z}L^{1-\a}\\
-w&=(1-\a)K^{\alpha} e^{(1- \alpha) z}L^{1-\a} \\
-\tau\left[w \ell+\left(r-\delta\right) k\right]&=T\\
-z&=\overline{z}
-\end{align}
-
-
-and therefore:
-
-\begin{align}
-c&=w \ell+ (r-\delta) k \\
-r&= \frac{1-\b}{\b (1 - \t)} + \d \\
-r&=\a K^{\alpha - 1} e^{(1-\alpha)z}L^{1-\a}\\
-K &= \frac{\a w}{(1-\a)r}\\
-c &= \parens{-\frac{w}{a}(1-\ell)^{-\xi}(1-\tau)}^{\frac{1}{\g}}\\
-z &=\overline{z}
-\end{align}
+\noindent $\mathcal{G}_{2}=\{A : A \text { is a finite union of intervals of the form }(\mathrm{a}, \mathrm{b}],(-\infty, \mathrm{b}], \text { and }(\mathrm{a}, \infty)\}$ is an algebra but not a $\s$ algebra:
+\begin{itemize}
+	\item G2 is a non-empty set.
+	\item G2 includes the empty set (for a = b) and its complement R (for $(-\inf , \infty)$.
+	\item G2 includes intervals and their complements, as well as finite unions of intervals by construction.
+	\item G2 does not include countable unions and is therefore not a $\s$ algebra.
+\end{itemize}
 
 
 
-\section*{Exercise 7}
-The model is now defined by:
+\noindent $\mathcal{G}_{3}=\{A : A \text { is a countable union of intervals of the form }(\mathrm{a}, \mathrm{b}],(-\infty, \mathrm{b}], \text { and }(\mathrm{a}, \infty)\}$ is a $\s$ algebra:
+\begin{itemize}
+	\item G3 is a non-empty set.
+	\item G3 includes the empty set (for a = b) and its complement R.
+	\item G3 includes intervals and their complements, as well as finite unions of intervals by constructions.
+	\item G3 is closed under countable unions by construction.
+\end{itemize}
+
+
+
+
+\subsection*{Exercise 1.7} % (fold)
+\noindent Let $A = \left\{ \emptyset, X \right\}$ be the smallest $\s$ algebra on X. 
+Suppose $\exists S$ a $\s$ algebra on X st ($\emptyset, X$) $\notin$ S. If the empty set is not in S then we have a contradiction. If X $\notin$ in S then $\emptyset^c \notin S$ then we have a contradiction. Therefore $(\emptyset, X)$ is included in S.
+Suppose $\exists S'$ the smallest $\s algebra$ on X st X $\notin (\emptyset, X)$, then S' there are some elements of S that are not included in X. S' therefore has at least 4 elements $(\emptyset, X, T, T^c)$ but S' is larger than S and we have a contradiction.
+\\
+\\
+\noindent 
+Suppose $\exists$ B, a $\s$ algebra on X st $B \nss \pP(X)$. Then $\exists$ L $ \in B \st L \notin \pP(X)$, ie $L \notin X$ which is a contradiction. Therefore $A = \left\{P(X) \right\} = \left\{A:A in X \right\}$ is the largest $\s$ algebra on X because in contains all other $\s$ algebra on X.
+
+
+
+
+\subsection*{Exercise 1.10} % (fold)
+
+Let $\braces{S_\a}$ be a family of $\s$-algebras on X. 
+All $S_\a$ contain $\emptyset$ so the $\emptyset$ is also included in their interesections. 
+Let A an element in the intersection of all $S_\a$: if A is in $S_\a$, then $A^c$ is too and $A^c$ is also included in the intersection and the family of $\s$ algebra on X is therefore closed under complements. 
+$S^\a$ are $\s$ algebra so they are closed under countable unions. Their intersection is therefore also closed under countable unions (and under finite unions) and is a $\s$ algebra.
+
+
+
+\subsection*{Exercise 1.22} % (fold)
+
+\noindent $\mu$ is a measure on (X,s) meaning that $\mu(\emptyset)=0$ and $\mu(UA_i) = \sum \mu(A_i)$ for $A_i \cap A_j = \emptyset$. 
+\\
+\\
+$\mu$ is monotone:\\ 
+Let $A \ss B the B = A \cup D for D \ss B and D \cap A = \emptyset$. Then $\mu(B) = \mu(A \cup D) = \mu(A) + \mu(D)$ by countable additivity. and $\mu(A) + \mu(D) \geq \mu(A)$ because $\mu(D) \geq 0$. 
+\\
+\\
+$\mu$ is countably subbaditive: Let's take $A_i$ and $A_j$ in A:
+\\
+$\mu(A_i \cup A_j) = \mu((A_i \cap A_j^c) \cup (A_i \ss \cap A_j) \cup (A_i \cap A_j)) = \mu(A_i \cap A_j^c) \cup \mu(A_i$c$ \cap A_j) \cup \mu(A_i \cap A_j)$ by countable additivity. \\
+If $A_i \cap A_j = \emptyset$ then $\mu(A_i \cap A_j) = \emptyset$ and $\mu(A_i \cup A_j) = \mu(A_i) + \mu(A_j)$. 
+\\
+If $A_i \cap A_j \neq \emptyset$ then $\mu(A_j \cap A_i) > \emptyset$ and $\mu(A_i \cup A_j) <= \mu(A_i) + \mu(A_j)$. 
+
+
+
+\subsection*{Exercise 1.23} % (fold)
+
+
+Let $A,B \ \in \ S $ such that $\l (A) = \mu(A\cap B)$
+\begin{itemize}
+	\item $\l (\emptyset) = \mu( \emptyset \cap B) = 0 $
+	\item Let $\braces{A_i, A_j}$ two elements of a family of disjoint sets in S, without loss of generality:
+	\begin{align*}
+	\l (A_i \cup A_j) &= \mu((A_i \cup A_j) \cap B)\\
+					&= \mu(A_i \cup A_j \cap B)\\
+					&= \mu((A_i \cap B) \cup (A_j \cap B)) \\
+					&= \mu(A_j \cap B) + \mu(A_i \cap B)\\
+					&= \l(A_j) + \l(A_i)
+	\end{align*}
+	\noindent So $\l$ is also countably additive.
+	
+\end{itemize}
+
+
+\subsection*{Exercise 1.26} % (fold)
+
+Let $\mu$ a measure on (X,S). Then $\mu$ is continuous from above: \footnote{Thanks Thomas' Pellet for debugging my $\cap$ / $\cup$ / $^c$ logical issues.}\\ 
 \begin{align*}
-\overline{c}&=(1-\tau)[\overline{w} \overline{\ell}+(\overline{r}-\delta) \overline{k}]+\overline{T} \\ 
-u_{c}(\overline{c}, \overline{\ell})&=\beta E_{t}\left\{u_{c}(\overline{c}, \overline{\ell})[(\overline{r}-\delta)(1-\tau)+1]\right\} \\ 
--u_{\ell}(\overline{c}, \overline{\ell})&=u_{c}(\overline{c}, \overline{\ell}) \overline{w}(1-\tau) \\ 
-\overline{r}&=f_{K}(\overline{k}, \overline{\ell}, \overline{z}) \\ 
-\overline{w}&=f_{L}(\overline{k}, \overline{\ell}, \overline{z}) \\ 
-\tau[\overline{w} \overline{\ell}+(\overline{r}-\delta) \overline{k}]&=\overline{T}
+	\mu (\cap^\infty_{i=1} A_i) &= \mu \parens{\parens{\cup^\infty_1 A^c_i}^c} \\
+						   &=  \mu (X) - \mu \parens{\cup^\infty_1 A^c_i}\\
+						   &= \mu (X) - \lim_{n \to \infty} \mu \parens{A^c_n} \quad \text{using} \ i) \\
+						   &= \mu (X) - \mu (X) +\lim_{n \to \infty} \mu \parens{A_n} \\
+						   &=  \lim_{n \to \infty} \mu \parens{A_n}
 \end{align*}
 
 
 
 
-% \listoftodos
+\section*{Section 2} % (fold)
+\label{sec:section_2}
+
+\subsection*{Exercise 2.10} % (fold)
+
+\begin{align*}
+	\mu^{*}(B) &= \mu^{*}(B \cap E \cup E \cap E^c) \subseteq \mu^{*}(B \cap E) + \mu^{*}(B \cap E^c)
+\end{align*}
+By subadditivity of disjoint elements:
+\begin{align*}
+	\mu^{*}(B) = \mu^{*}(B \cap E) + \mu^{*}(B \cap E^c)
+\end{align*}
+
+
+
+\subsection*{Exercise 2.14} % (fold)
+Prove that $\bB (\RR) = \s (\oO) = \s (\AA)$ using Cathéodory extension...
+
+
+
+\section*{Section 3} % (fold)
+\label{sec:section_3}
+
+\subsection*{Exercise 3.1} % (fold)
+
+A countable subset of the real line is a singleton because each element of the real line is surrounded by irrational numbers.
+Let $(x) in R$ a singleton set. $x$ is a countable set (of size 1). Suppose that $\exists \e$ st $\mu(x) > \e$ according to $\mu$ the Lebesque measure.
+By construction, $(x) in (x - \frac{\e}{2} ; x + \frac{\e}{2})$.
+By use subadditivity (because $\mu$ is a measure) and get:
+\begin{align*}
+	\mu(x) &\leq \mu((x-\frac{\e}{2}, x+\frac{\e}{2})) \leq \e
+\end{align*}
+This contradicts the initial supposition, even for $\lim_{O} \e$. Therefore the measure of a countable subset of the real line, a singleton is 0.
+
+
+
+
+\subsection*{Exercise 3.7} % (fold)
+One can define a function $g : X \to R$ measurable st $g(x) = -f(x)$. For any a:
+$\braces{x \in X : f(x) <a} = \braces{x \in X : -g(x) >a}$.
+\\
+$f(x) < a $ corresponds to $f(x) \ss (-\inf, a) $ so the complement of this set is also in M (because M is a $\s$ algebra).
+\\
+All sets $f^{-1}(-\inf, a] ; f^{-1}(-\inf, a) ; f^{-1}(a, \inf) , f^{-1}[a, \inf)]$ are also on M.
+
+
+\subsection*{Exercise 3.10} % (fold)
+
+\subsection*{Exercise 3.17} % (fold)
+
+
+\section*{Section 4} % (fold)
+\label{sec:section_4}
+
+\subsection*{Exercise 4.13} % (fold)
+
+\subsection*{Exercise 4.14} % (fold)
+
+\subsection*{Exercise 4.15} % (fold)
+
+\subsection*{Exercise 4.16} % (fold)
+
+\subsection*{Exercise 4.21} % (fold)
+
 
 \end{document}
